@@ -50,7 +50,7 @@ const displayMenu = datas =>{
         <div class="col-md-8 col-sm-12">
             <div class="card-body">
             <h5 class="card-title">${data.title}</h5>
-            <p class="card-text text-secondary">${data.details.slice(0, 375)}</p>
+            <p class="card-text text-secondary">${data.details.slice(0, 375) + '...'}</p>
 
         
         <div class="d-flex mt-2 mb-2">  
@@ -79,7 +79,7 @@ const displayMenu = datas =>{
 
 // card modal -
 const loadNewsDetails = async() =>{
-    const url = 'https://openapi.programming-hero.com/api/news/0282e0e58a5c404fbd15261f11c2ab6a';
+    const url = 'https://openapi.programming-hero.com/api/news/2e78e5e0310c2e9adbb6efb1a263e745';
     const response = await fetch(url);
     const data = await response.json();
      displayNewsDetails(data.data[0]);
@@ -88,13 +88,14 @@ const loadNewsDetails = async() =>{
 
     const displayNewsDetails = data =>{
         console.log(data);
-        const modalTitle = document.getElementById('newsModalLabel');
+        let modalTitle = document.getElementById('newsModalLabel');
         modalTitle.innerText = data.title;
-        const newsDetails = document.getElementById('news-details');
+        let newsDetails = document.getElementById('news-details');
         newsDetails.innerText = data.category_id;
-        const newsView = document.getElementById('news-view');
-        newsView.innerText = data.total_view;
-        const detailsModal = document.getElementById('details-modal');
+        let newsView = document.getElementById('news-view');
+        newsView.innerText =(data.total_view ? data.total_view : 'Total view: No found data');
+        
+        let detailsModal = document.getElementById('details-modal');
         detailsModal.innerText = data.details.slice(0, 180);
     }
 
