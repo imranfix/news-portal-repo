@@ -1,38 +1,38 @@
-const loadMenuBar = async() =>{
-    const url = 'https://openapi.programming-hero.com/api/news/categories';
-    const response = await fetch(url);
-    const data = await response.json();
-     displayMenu(data.data.news_category);
+    const loadMenuBar = async() =>{
+        const url = 'https://openapi.programming-hero.com/api/news/categories';
+        const response = await fetch(url);
+        const data = await response.json();
+        displayMenu(data.data.news_category);
  
 }
 
 
 // catagory section AIP display show- 
-const displayMenu = datas =>{
-     const  menuBar = document.getElementById('menu-bar');
-     for(const data of datas){
-         console.log(data);
+    const displayMenu = datas =>{
+        const  menuBar = document.getElementById('menu-bar');
+        for(const data of datas){
+        console.log(data);
 
-     const menuDiv = document.createElement('div');
-     menuDiv.classList.add('ul');
-     menuDiv.innerHTML= `
-           <li onclick="loadDataCatagory()" id="cata-click" class=" text-decoration-none fw-semibold text-secondary ms-1 px-2">${data.category_name}</li>
+        const menuDiv = document.createElement('div');
+        menuDiv.classList.add('ul');
+        menuDiv.innerHTML= `
+        <li onclick="loadDataCatagory()" id="cata-click" class=" text-decoration-none fw-semibold text-secondary ms-1 px-2">${data.category_name}</li>
 
-     ` ;    
-     menuBar.appendChild(menuDiv)
+        ` ;    
+        menuBar.appendChild(menuDiv)
      }
      
     } 
 
 //  menu card:
-
- const loadDataCatagory = () =>{
-    fetch('https://openapi.programming-hero.com/api/news/category/01')
-    .then(res => res.json())
-    .then(data => displayCardData(data.data[0]))
-    .catch(error => console.log(error))
+    const loadDataCatagory = () =>{
+        fetch('https://openapi.programming-hero.com/api/news/category/01')
+        .then(res => res.json())
+        .then(data => displayCardData(data.data[0]))
+        .catch(error => console.log(error))
  }
- const displayCardData = data=>{
+
+    const displayCardData = data=>{
         const dataContainer = document.getElementById('load-cardData');
          //data.forEach(data =>{
         console.log(data);
@@ -57,14 +57,17 @@ const displayMenu = datas =>{
 
 
 
-
-
     // card section API 
     const loadCards = async() =>{
         const url = 'https://openapi.programming-hero.com/api/news/category/01';
+        try{
         const response = await fetch(url);
         const data = await response.json();
          displayCard(data.data);
+        }
+        catch(error){
+            console.log(error);
+        }
        
     }
 
@@ -73,7 +76,7 @@ const displayMenu = datas =>{
     const displayCard = datas =>{
         const  cardBar = document.getElementById('card-bar');
         datas.forEach(data =>{
-            console.log(data);
+        console.log(data);
    
         const cardDiv = document.createElement('div');
         cardDiv.classList.add('col');
@@ -112,11 +115,11 @@ const displayMenu = datas =>{
 
 
 //  card modal -
-const loadNewsDetails = async() =>{
-    const url = 'https://openapi.programming-hero.com/api/news/2e78e5e0310c2e9adbb6efb1a263e745';
-    const response = await fetch(url);
-    const data = await response.json();
-     displayNewsDetails(data.data[0]);
+    const loadNewsDetails = async() =>{
+        const url = 'https://openapi.programming-hero.com/api/news/2e78e5e0310c2e9adbb6efb1a263e745';
+        const response = await fetch(url);
+        const data = await response.json();
+        displayNewsDetails(data.data[0]);
    
 }
 
