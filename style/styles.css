@@ -1,0 +1,40 @@
+hr{
+    width: 70rem;
+    margin-left: 200px;
+    margin-right: 200px;
+    color: gray;
+}
+
+.test{
+    height: 50px;
+    width: 50px;
+    padding: 5px;
+}
+
+.mt-3 {
+    margin-top: 3rem!important;
+}
+
+
+
+
+
+
+
+/* responsive for mobile device */
+/* @media screen and (max-width: 767px){
+
+    .btn{
+        margin-bottom: 30px;
+    }
+
+    .font-h5{
+        font-size: 1rem;
+    }
+
+    .btn-imran{
+        margin-top: 65px;
+    }
+  
+
+} */
