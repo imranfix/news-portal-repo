@@ -20,9 +20,6 @@ hr{
 
 
 
-
-
-
 /* responsive for mobile device */
  @media screen and (max-width: 767px){
 
@@ -41,5 +38,18 @@ hr{
     .test-flex{
         display: flex;
     }
+    .btn{
+        margin-right: 90px;
+    }
+
+
+.px-5 {
+    padding-left: 0.5rem!important;
+    
+}
+
+.ms-4 {
+    margin-left: -2.5rem!important;
+}
 
 }
