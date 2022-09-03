@@ -21,6 +21,8 @@ hr{
 
 
 
+
+
 /* responsive for mobile device */
  @media screen and (max-width: 767px){
 
@@ -36,5 +38,8 @@ hr{
         margin-top: 65px;
     }
   
+    .test-flex{
+        display: flex;
+    }
 
 }
