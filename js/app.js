@@ -1,3 +1,4 @@
+// catagory Api data load-
     const loadMenuBar = async() =>{
         const url = 'https://openapi.programming-hero.com/api/news/categories';
         const response = await fetch(url);
@@ -80,7 +81,7 @@
         toggleSpinner(false);
     }
 
-    loadDataCatagory();
+        loadDataCatagory();
 
 
 
@@ -139,8 +140,6 @@
        } 
 
 
-
-
 //  card modal -
     const loadNewsDetails = async() =>{
         const url = 'https://openapi.programming-hero.com/api/news/2e78e5e0310c2e9adbb6efb1a263e745';
@@ -148,7 +147,7 @@
         const data = await response.json();
         displayNewsDetails(data.data[0]);
    
-}
+    }
 
     const displayNewsDetails = data =>{
         console.log(data);
@@ -164,6 +163,6 @@
     }
 
 
-loadCards();
+    loadCards();
 
-loadMenuBar();
+    loadMenuBar();
