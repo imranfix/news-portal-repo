@@ -16,10 +16,11 @@
         const menuDiv = document.createElement('div');
         menuDiv.classList.add('ul');
         menuDiv.innerHTML= `
-        <li onclick="loadDataCatagory()" id="cata-click" class=" text-decoration-none fw-semibold text-secondary ms-1 px-2">${data.category_name}</li>
+        <li onclick="loadDataCatagory()" id="cata-click" class=" text-decoration-none fw-semibold  text-secondary ms-1 px-2">${data.category_name}</li>
 
         ` ;    
         menuBar.appendChild(menuDiv)
+       
      }
      
     } 
@@ -30,17 +31,34 @@
         .then(res => res.json())
         .then(data => displayCardData(data.data[0]))
         .catch(error => console.log(error))
+
+        // start-
+        toggleSpinner(true);
+    
  }
 
+// loading spinner:
+    const toggleSpinner = isLoading=>{
+        const loaderSection = document.getElementById('loader');
+        if(isLoading){
+            loaderSection.classList.remove('d-none')
+        }
+        else{
+            loaderSection.classList.add('d-none')
+        }
+    }
+
+//  menu card display-
     const displayCardData = data=>{
         const dataContainer = document.getElementById('load-cardData');
          //data.forEach(data =>{
         console.log(data);
+      
   
         const dataDiv = document.createElement('div');
         dataDiv.classList.add('col');
         dataDiv.innerHTML = `
-        <div class="card h-100">
+        <div id="no-found" class="card h-100">
           <img src="${data.image_url}" class="card-img-top" alt="...">
             <div class="card-body">
             <h5 class="card-title">${data.title.slice(0, 20)}</h5>
@@ -51,6 +69,15 @@
     
         `;
         dataContainer.appendChild(dataDiv);
+        const noCard = document.getElementById('no-found');
+        if(data.length ===0){
+            noCard.classList.remove('d-none');
+        }
+        else{
+            noCard.classList.add('d-none');
+        }
+        // stop spinner-
+        toggleSpinner(false);
     }
 
     loadDataCatagory();
